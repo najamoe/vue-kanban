@@ -1,5 +1,4 @@
 <template>
-
   <div class="container mt-5">
       <div class="row mb-4">
         <div class="col form-inline">
@@ -68,28 +67,30 @@ export default {
   },
   data( ){
     return {
-      newTask: "",
-      newTaskText: "",
-      arrBacklog: [
+      // Data properties for managing tasks and their details
+      newTask: "", // Input field for new task name
+      newTaskText: "", // Input field for new task additional text
+      arrBacklog: [ // Array for tasks in the backlog
         { id: 1, name: "Code sign Up Page", text: "Lorem Ipsum dolor sit amet" },
       ],
-      arrInProgress: [
+      arrInProgress: [ // Array for tasks in progress
         { id: 2, name: "Test Dashboard", text: "consectetur adipiscing elit" },
       ],
-      arrTested: [
+      arrTested: [ // Array for tested tasks
         { id: 3, name: "Style registration", text: "sed do eiusmod tempo" },
       ],
-      arrDone: [
+      arrDone: [ // Array for completed tasks
         { id: 4, name: "Help with Designs", text: "incididunt ut labore et dolore" },
       ]
     }
   },
   methods:{
+      // Method to add new task to the backlog, all new tasks are added to backlog as default
     add(){
       if(this.newTask) {
         this.arrBacklog.push({ id: this.arrBacklog.length + 1, name: this.newTask, text: this.newTaskText }),
-        this.newTask = "";
-        this.newTaskText = "";
+        this.newTask = ""; // Reset new task input field
+        this.newTaskText = ""; // Reset new task additional text input field
       }
     }
   }

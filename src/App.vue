@@ -71,16 +71,16 @@ export default {
       newTask: "",
       newTaskText: "",
       arrBacklog: [
-        { id: 1, name: "Code sign Up Page", text: "" },
+        { id: 1, name: "Code sign Up Page", text: "Lorem Ipsum dolor sit amet" },
       ],
       arrInProgress: [
-        { id: 2, name: "Test Dashboard", text: "" },
+        { id: 2, name: "Test Dashboard", text: "consectetur adipiscing elit" },
       ],
       arrTested: [
-        { id: 3, name: "Style registration", text: "" },
+        { id: 3, name: "Style registration", text: "sed do eiusmod tempo" },
       ],
       arrDone: [
-        { id: 4, name: "Help with Designs", text: "" },
+        { id: 4, name: "Help with Designs", text: "incididunt ut labore et dolore" },
       ]
     }
   },

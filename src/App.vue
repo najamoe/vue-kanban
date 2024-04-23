@@ -3,7 +3,9 @@
   <div class="container mt-5">
       <div class="row mb-4">
         <div class="col form-inline">
-          <b-form-input v-model="newTask" placeholder="Enter Task" @keyup.enter="add"></b-form-input> <b-button class="ml-2" variant="primary" @click="add">add</b-button>
+          <b-form-input v-model="newTask" placeholder="Enter Task" @keyup.enter="add"></b-form-input> 
+          <b-form-input v-model="newTaskText" placeholder="Enter Additional Text"></b-form-input>
+          <b-button class="ml-2" variant="primary" @click="add">Add</b-button>
         </div>
       </div>
 
@@ -12,10 +14,10 @@
           <div class="p-2 alert custom-alert-1">
             <h3>Backlog</h3>
             <draggable class="list-group kanban-column" :list="arrBacklog" group="tasks">
-            <div class="list-group-item" v-for="element in arrBacklog" :key="element.name">
-            {{ element.name }}
-            </div>
-          </draggable>
+              <div class="list-group-item" v-for="task in arrBacklog" :key="task.id">
+                {{ task.name }} - {{ task.text }}
+              </div>
+            </draggable>
           </div>
         </div>
 
@@ -23,10 +25,10 @@
           <div class="p-2 alert custom-alert-2">
             <h3>In progress</h3>
             <draggable class="list-group kanban-column" :list="arrInProgress" group="tasks">
-            <div class="list-group-item" v-for="element in arrInProgress" :key="element.name">
-            {{ element.name }}
-            </div>
-          </draggable>
+              <div class="list-group-item" v-for="task in arrInProgress" :key="task.id">
+                {{ task.name }} - {{ task.text }}
+              </div>
+            </draggable>
           </div>
         </div>
 
@@ -34,10 +36,10 @@
           <div class="p-2 alert custom-alert-3">
             <h3>Tested</h3>
             <draggable class="list-group kanban-column" :list="arrTested" group="tasks">
-            <div class="list-group-item" v-for="element in arrTested" :key="element.name">
-            {{ element.name }}
-            </div>
-          </draggable>
+              <div class="list-group-item" v-for="task in arrTested" :key="task.id">
+                {{ task.name }} - {{ task.text }}
+              </div>
+            </draggable>
           </div>
         </div>
 
@@ -45,10 +47,10 @@
           <div class="p-2 alert custom-alert-4">
             <h3>Done</h3>
             <draggable class="list-group kanban-column" :list="arrDone" group="tasks">
-            <div class="list-group-item" v-for="element in arrDone" :key="element.name">
-            {{ element.name }}
-            </div>
-          </draggable>
+              <div class="list-group-item" v-for="task in arrDone" :key="task.id">
+                {{ task.name }} - {{ task.text }}
+              </div>
+            </draggable>
           </div>
         </div>
       </div>
@@ -67,22 +69,27 @@ export default {
   data( ){
     return {
       newTask: "",
+      newTaskText: "",
       arrBacklog: [
-        {name: "Code sign Up Page"},
-        {name: "Test Dashboard"},
-        {name: "Style registration"},
-        {name: "Help with Designs"},
+        { id: 1, name: "Code sign Up Page", text: "" },
       ],
-      arrInProgress: [],
-      arrTested: [],
-      arrDone: []
+      arrInProgress: [
+        { id: 2, name: "Test Dashboard", text: "" },
+      ],
+      arrTested: [
+        { id: 3, name: "Style registration", text: "" },
+      ],
+      arrDone: [
+        { id: 4, name: "Help with Designs", text: "" },
+      ]
     }
   },
   methods:{
     add(){
       if(this.newTask) {
-        this.arrBacklog.push({name: this.newTask}),
-        this.newTask="";
+        this.arrBacklog.push({ id: this.arrBacklog.length + 1, name: this.newTask, text: this.newTaskText }),
+        this.newTask = "";
+        this.newTaskText = "";
       }
     }
   }
